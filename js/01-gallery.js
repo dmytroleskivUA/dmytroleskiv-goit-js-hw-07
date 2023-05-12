@@ -1,8 +1,8 @@
 import { galleryItems } from "./gallery-items.js";
 
-// Cтворення розмітки
-
 const galleryList = document.querySelector(".gallery");
+
+// Cтворення розмітки
 
 const li = galleryItems
   .map((item) => {

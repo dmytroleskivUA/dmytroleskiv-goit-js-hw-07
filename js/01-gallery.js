@@ -2,7 +2,7 @@ import { galleryItems } from "./gallery-items.js";
 
 // Cтворення розмітки
 
-const gallery = document.querySelector(".gallery");
+const galleryList = document.querySelector(".gallery");
 
 const li = galleryItems
   .map((item) => {

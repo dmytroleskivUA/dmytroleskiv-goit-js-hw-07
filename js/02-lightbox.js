@@ -17,17 +17,9 @@ const li = galleryItems
     </a>
     </li>`;
   })
-  .join("\n");
+  .join("");
 
 galleryList.insertAdjacentHTML("afterbegin", li);
-
-// Заборона перенаправлення для посилань
-
-document
-  .querySelectorAll(".gallery__link")
-  .forEach((item) =>
-    item.addEventListener("click", (event) => event.preventDefault())
-  );
 
 //   Ініціалізація бібліотеки
 

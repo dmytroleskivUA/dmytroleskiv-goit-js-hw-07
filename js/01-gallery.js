@@ -4,14 +4,14 @@ const gallery = document.querySelector(".gallery");
 
 const galleryList = galleryItems
   .map(
-    (el) =>
+    (item) =>
       ` <li class="gallery__item">
-  <a class="gallery__link" href=${el.original}>
-    <img
+      <img
       class="gallery__image"
-      src=${el.preview}
-      data-source=${el.original}
-      alt=${el.description}
+      src=${item.preview}
+      data-source=${item.original}
+      <a class="gallery__link" href=${item.original}>
+      alt=${item.description}
     />
   </a>
 </li>`
@@ -26,13 +26,24 @@ gallery.addEventListener("click", (e) => {
 
   const selectedImage = e.target.getAttribute("data-source");
 
-  const instance = basicLightbox.create(`
-    <img src="${selectedImage}" width="800" height="600">
-`);
-  instance.show();
-  gallery.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      instance.close();
+  const instance = basicLightbox.create(
+    `
+    <img src="${selectedImage}" width="800" height="600">`,
+    {
+      onShow: (instance) => {
+        window.addEventListener("keydown", closeByEsc);
+      },
+      onClose: (instance) => {
+        window.removeEventListener("keydown", closeByEsc);
+      },
     }
-  });
+  );
+
+  //   instance.show();
+  //   gallery.addEventListener("keydown", (e) => {
+  //     if (e.key === "Escape") {
+  //       instance.close();
+  //     }
+  //   });
+  // });
 });
